@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>星云游戏城</title>
+    <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href='./static/css/bootstrap.css'>
+    <link rel="stylesheet" type="text/css" href='./static/css/font-awesome.min.css'>
+    <link rel="stylesheet" type="text/css" href='./static/css/action/style.css'>
+
+</head>
+<body class="overflow-hidden">
+	<div class="outer-container">
+        <input type="hidden" name="openid" id="openid" value="" />
+		<div class="part-one up">
+            <div class="part-one-block player_id">
+                <span class="spam-text">游戏ID：</span>
+                <span contenteditable="true" class="spam-input" id="player_id"></span>
+            </div>
+            <div class="part-one-block club_id">
+                <span class="spam-text">游戏厅：</span>
+                <select class="list club_list" id="club_id" name="club_id">
+                    
+                </select>
+            </div>
+            <div class="part-one-block club_card">
+                <span class="spam-text">卡：</span>
+                <select class="list card_list" id="card_id" name="card_value">
+                    
+                </select>
+            </div>
+        </div>
+        <div class="part-two">
+            <input type="hidden" name="type_id" id="type_id" value="1">
+            <button class="button-money select" data-id="1">余额充值</button>
+            <span class="depart"></span>
+            <button class="button-coin" data-id="4">代币兑换</button>
+        </div>
+        <div class="part-three">
+            <span class="type">充余额</span>
+            <span class="part-three-right">
+                <span class="notice">当前余额：</span>
+                <span class="value">--</span>
+            </span>
+        </div>
+        <div class="part-four">
+            <input type="hidden" name="goods_id" id="goods_id">
+            <ul class="goods">
+            
+            </ul>
+        </div>
+        <!-- <div class="part-one ext">
+            <p class="exchange-notice">请选择您要支付的卡：</p>
+            
+        </div> -->
+        <div class="part-five">
+            <button class="button-do"></button>
+        </div>
+        
+	</div>
+
+    <div class="mask">
+        <div class="mask-foot"></div>
+        <div class="mask-face">
+            <div class="notice">
+
+            </div>
+            <div class="mask-button">
+                <button class="cancel"></button>
+                <span class="depart"></span>
+                <button class="confirm"></button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script src="./static/js/jquery.min.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+<script src="./static/js/jquery.slimscroll.min.js"></script>
+<script src="./static/js/rapheal.min.js"></script>
+<script src="./static/js/morris.min.js"></script>
+<script src="./static/js/uncompressed/datepicker.js"></script>
+<script src="./static/js/sparkline.min.js"></script>
+<script src="./static/js/uncompressed/skycons.js"></script>
+<script src="./static/js/sparkline.min.js"></script>
+<script src="./static/js/uncompressed/skycons.js"></script>
+<script src="./static/js/jquery.popupoverlay.min.js"></script>
+<script src="./static/js/jquery.easypiechart.min.js"></script>
+<script src="./static/js/uncompressed/jquery.sortable.js"></script>
+<script src="./static/js/owl.carousel.min.js"></script>
+<script src="./static/js/modernizr.min.js"></script>
+<script src="./static/js/utility/layer/layer.js"></script>
+<script src="./static/js/upload.js"></script>
+<script src="./static/js/zepto.min.js"></script>
+<script src="./static/js/utility/common.js"></script>
+
+<script type="text/javascript">
+// 获取code
+var param =  UrlSearch();
+var code     = param['code'];
+var order_id = param['order_id'];
+if(typeof(code) == 'undefined'){
+    code = '';
+}
+// if(typeof(order_id) != 'undefined'){
+    // initOrderStatus(order_id);
+// }
+
+// 授权信息
+initWxInfo(code);
+
+
+function initOrderStatus(order_id){
+    var url = shopApi + "Index/syncPayOrder";
+    var i = 0;
+    var load5 = layer.load(0, {shade: [0.5,'#000']});
+    var end = setInterval(function(){
+        i++;
+        get(
+            url,
+            {order_id:order_id},
+            function(data){
+                if(data.status == 0){
+                    if(data.data.status == 0){
+                        clearInterval(end);
+                        layer.close(load5);
+                        layer.msg('充值成功',{icon: 1, time: 1000}, function(){
+                            agaxUserInfo();
+                        });
+                    }else{
+                        if(i >= 30){
+                            clearInterval(end);
+                            layer.close(load5);
+                            layer.msg('服务器繁忙，请稍后查询兑换结果', {icon: 5});
+                        }
+                    }
+                }else{
+                    clearInterval(end);
+                    layer.close(load5);
+                    layer.alert(data.msg);
+                }
+            }
+        )
+    },500);
+}
+
+/**
+ * 获取俱乐部信息
+ * @return {[type]} [description]
+ */
+function initWxInfo(code){
+    // 获取用户信息
+    var url = shopApi + "Index/getWxUser";
+    var load1 = null;
+    get(
+        url,
+        {code:code},
+        function(data){
+            if(data.status == 0){
+                $('#player_id').text(data.data.userInfo.player_id);
+                $('#openid').val(data.data.userInfo.openid);
+                var html = '';
+                var len = data.data.club.length;
+                for(var i = 0;i < len ; i++){
+                    if(i == 0){
+                        var sel = 'selceted';
+                    }else{
+                        var sel = '';
+                    }
+                    html += '<option value="'+data.data.club[i].club_id+'" '+sel+'>'+data.data.club[i].club_name+'</option>';
+                }
+                $('#club_id').html(html);
+                // 初始化信息
+                initClubCardInfo();
+            }else if(data.status == 40029 || data.status == 40163){
+                location.href = shopApi + 'Index/index';
+            }else{
+                layer.alert(data.msg);
+            }
+        }
+        // function(){
+        //     load1 = layer.load(0, {shade: [0.5,'#000']});
+        //     $('.layui-layer-loading .layui-layer-content').css('margin','0 auto');
+        // },
+        // function(){
+        //     layer.close(load1);
+        // }
+    )
+}
+
+/**
+ * 获取卡片信息
+ * @return {[type]} [description]
+ */
+function initClubCardInfo(){
+    var player_id = $('#player_id').text();
+    var club_id   = $('#club_id').val();
+    var url = shopApi + "Index/changeClub";
+    get(url,{player_id:player_id,club_id:club_id},function(data){
+        if(data.status == 0){
+            var html = '';
+            var len = data.data.card.length;
+            for(var i = 0;i < len ; i++){
+                if(i == 0){
+                    var sel = 'selceted';
+                }else{
+                    var sel = '';
+                }
+                html += '<option value="'+data.data.card[i].value+'" '+sel+'>'+data.data.card[i].name+'</option>';
+            }
+            $('#card_id').html(html);
+            ajaxGoodsList();
+            agaxUserInfo();
+        }else{
+            layer.alert(data.msg);
+        }
+    })
+}
+
+/**
+ * 切换俱乐部
+ */
+$('#club_id').on('change', function(){
+    initClubCardInfo();
+})
+
+/**
+ * 切换卡片
+ */
+$('#card_id').on('change', function(){
+    agaxUserInfo();
+})
+
+$(document).on('click', '.part-four li', function(){
+    $('.part-four li').removeClass('select');
+    $(this).addClass('select');
+    $('#goods_id').val($(this).data('id'));
+})
+
+$('.part-two button').on('click', function(){
+    if($(this).hasClass('select')){
+        return false;
+    }
+    $('.part-two button').removeClass('select');
+    $(this).addClass('select');
+    var type_id = $(this).data('id');
+    $('#type_id').val(type_id);
+    if(type_id == 1){
+        $('.part-three .type').text('充余额');
+        $('.part-three .notice').text('当前余额：');
+        $('.part-five .button-do').css('background-image','url("./static/images/shop/btn_lijichongzhi.png")');
+        // var temp = $('.ext .club_card');
+        // $('.up').append(temp);
+        // temp.remove();
+        $('.club_card .spam-text').text('卡：');
+    }
+    if(type_id == 4){
+        $('.part-three .type').text('换代币');
+        $('.part-three .notice').text('线上代币数：');
+        $('.part-five .button-do').css('background-image','url("./static/images/shop/lijiduihuan_liang.png")');
+        // var temp = $('.up .club_card');
+        // temp.remove();
+        // $('.ext').append(temp);
+        $('.club_card .spam-text').text('支付卡：');
+    }
+
+    ajaxGoodsList();
+    agaxUserInfo();
+})
+
+/**
+ * 玩家信息
+ * @return {[type]} [description]
+ */
+function agaxUserInfo(){
+    var player_id  = $('#player_id').text();
+    var club_id    = $('#club_id').val();
+    var card_value = $('#card_id').val();// 1-44，2-444
+    var type_id    = $('#type_id').val();
+    var card_type  = card_value.substring(0,1);
+    if(type_id == 4){
+        card_value = $('#card_id option:eq(0)').attr('value');
+    }
+    var url = shopApi + "Index/getUserInfo";
+    var load2 = null;
+    get(
+        url,
+        {player_id:player_id,club_id:club_id,card_value:card_value},
+        function(data){
+            if(data.status == 0){
+                if(card_type == '1'){
+                    // 电子卡
+                    if(type_id == 1){
+                        $('.part-three .value').text(data.data.info.player_amount);
+                    }
+                    if(type_id == 4){
+                        $('.part-three .value').text(data.data.info.player_tokens);
+                    }
+                }
+                if(card_type == '2'){
+                    if(type_id == 1){
+                        $('.part-three .value').text(data.data.info.club_card_card_amount);
+                    }
+                    if(type_id == 4){
+                        $('.part-three .value').text(data.data.info.player_tokens);
+                    }
+                }
+            }else{
+                layer.alert(data.msg);
+            }
+        },
+        function(){
+            load2 = layer.load(0, {shade: [0.5,'#000']});
+        },
+        function(){
+            layer.close(load2);
+        }
+    )
+}
+
+/**
+ * 获取商品列表
+ * @return {[type]} [description]
+ */
+function ajaxGoodsList(){
+    var club_id = $('#club_id').val();
+    var type_id = $('#type_id').val();
+    var url = shopApi + "Index/getGoods";
+    get(
+        url,
+        {club_id:club_id,type_id:type_id},
+        function(data){
+            if(data.status == 0){
+                outPutList(data.data.goods, type_id);
+            }else{
+                layer.alert(data.msg);
+            }
+        }
+    )
+}
+
+function outPutList(data, type){
+    var len = data.length;
+    var html = '';
+    for(var i = 0; i<len; i++){
+        if(i == 0){
+            var select = 'select';
+            $('#goods_id').val(data[i].goods_id);
+        }else{
+            var select = '';
+        }
+        html += '<li class="'+select+'" data-id="'+data[i].goods_id+'">\
+                    <div class="part-four-box">';
+        if(type == 1){
+            html +=     '<span class="goods-icon money"></span>';
+            var price_type = '元';
+            var goods_name = data[i].goods_name.replace(/余额/g, "");
+        }
+        if(type == 4){
+            html +=     '<span class="goods-icon coin"></span>';
+            var price_type = '余额';
+            var goods_name = data[i].goods_name.replace(/代币/g, "");
+        }
+        html +=         '<span class="goods-num"><span class="goods-g">x</span><span class="number">'+goods_name+'</span></span>\
+                    </div>\
+                    <p class="goods-desc">'+data[i].goods_price+price_type+'</p>\
+                </li>';
+    }
+    $('.part-four .goods').html(html);
+}
+
+function showNotice(){
+    var type_id    = $('#type_id').val();
+    var player_id  = $('#player_id').text();
+    var club_name  = $('#club_id option:selected').text();
+    var goods_id   = $('#goods_id').val();
+    var goods_num  = $('.goods li[data-id="'+goods_id+'"]').find('.number').text();
+    var card_value = $('#card_id').val();
+    var card_type  = card_value.substring(0,1);
+    var arr        = $('#card_id option:selected').text().split('：');
+    var card_no    = arr[1];
+    var html       = '';
+    if(type_id == 1){
+        // 充值余额
+        html = '<span>您确定给</span>\
+                <span class="player-id">'+player_id+'</span>\
+                <span>在</span>\
+                <span class="club-info">'+club_name+'</span>\
+                <span class="other">\
+                     充值 <span class="price">'+goods_num+'</span> 余额吗？\
+                </span>';
+    }else if(type_id == 4){
+        if(card_type == 1){
+            // 电子卡兑换
+            html = '<span>您确定给</span>\
+                    <span class="player-id">'+player_id+'</span>\
+                    <span>在</span>\
+                    <span class="club-info">'+club_name+'</span>\
+                    <span class="other">\
+                        用线上电子卡兑换 <span class="price">'+goods_num+'</span> 线上代币吗？\
+                    </span>';
+        }else if(card_type == 2){
+            // 实体卡兑换
+            html = '<span>您确定给</span>\
+                    <span class="player-id">'+player_id+'</span>\
+                    <span>在</span>\
+                    <span class="club-info">'+club_name+'</span>\
+                    <span class="other">\
+                        用实体卡(卡号<span class="card-no">'+card_no+'</span>) 兑换 <span class="price">'+goods_num+'</span> 线上代币吗？\
+                    </span>';
+        }
+    }
+
+    $('.mask-face .notice').html(html);
+}
+
+$('.button-do').on('click', function(){
+    showNotice();
+    $('.mask').show();
+    $(".mask-face").show();
+    $("html").css({"overflow":"hidden","height":"100%"});
+    $("body").css({"overflow":"hidden","height":"100%"});
+})
+
+
+$('.mask .cancel').on('click', function(){
+    $('.mask').hide();
+    $("html").css({"overflow":"visible","height":"auto"});
+    $("body").css({"overflow":"visible","height":"auto"});
+})
+$('.mask .confirm').on('click', function(){
+    $('.mask').hide();
+    $("html").css({"overflow":"visible","height":"auto"});
+    $("body").css({"overflow":"visible","height":"auto"});
+
+    var type_id = $('#type_id').val();
+    // if($(this).hasClass('disabled')){
+    //     return false;
+    // }
+    if(type_id == 1){
+        // 购买余额
+        callpay();
+    }else if(type_id == 4){
+        // 换代币
+        exchangeCoin();
+    }else{
+        return false;
+    }
+})
+
+// 微信支付
+function callpay() {
+    if (typeof WeixinJSBridge == "undefined"){
+        if( document.addEventListener ){
+            document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+        }else if (document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', jsApiCall); 
+            document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+        }
+    }else{
+        // 下单
+        unifiedorder();
+    }
+}
+
+function unifiedorder(){
+    var card_value = $('#card_id').val();
+    var goods_id   = $('#goods_id').val();;
+    var club_id    = $('#club_id').val();
+    var player_id  = $('#player_id').text();
+    var openid     = $('#openid').val();
+    var str        = '';
+    var load2 = null;
+    // 下单
+    var url2 = shopApi + "Index/orderAmount";
+    post(
+        url2,
+        {club_id:club_id, card_value:card_value, player_id:player_id, goods_id:goods_id, openid:openid},
+        function(data){
+            if(data.status == 0){
+                str = data.data.msg;
+                if(str != ''){
+                    // 拉起支付
+                    jsApiCall(jQuery.parseJSON(str), data.data.order_id);
+                }else{
+                    layer.alert('下单失败，请重试');
+                    return false;
+                }
+            }else if(data.status == 402){
+                layer.alert(data.msg);
+                location.href = shopApi + 'Index/index';
+            }else{
+                layer.alert(data.msg);
+                return false;
+            }
+        },
+        function(){
+            // $('.button-do').addClass('disabled');
+            load2 = layer.load(0, {shade: [0.5,'#000']});
+        },
+        function(){
+            // $('.button-do').removeClass('disabled');
+            layer.close(load2);
+        }
+    )
+}
+
+function jsApiCall($jsApiParameters, order_id) {
+    WeixinJSBridge.invoke(
+        'getBrandWCPayRequest',
+        $jsApiParameters,
+        // {
+        //     "appId":"wx2421b1c4370ec43b",     //公众号名称，由商户传入     
+        //     "timeStamp":"1395712654",         //时间戳，自1970年以来的秒数     
+        //     "nonceStr":"e61463f8efa94090b1f366cccfbbb444", //随机串     
+        //     "package":"prepay_id=u802345jgfjsdfgsdg888",     
+        //     "signType":"MD5",         //微信签名方式：     
+        //     "paySign":"70EA570631E4BB79628FBCA90534C63FF7FADD89" //微信签名 
+        // }
+        function(res){
+            if(res.err_msg == "get_brand_wcpay_request:ok" ) {
+                initOrderStatus(order_id);
+            }
+            if(res.err_msg == "get_brand_wcpay_request:cancel" ){
+
+            }
+            if(res.err_msg == "get_brand_wcpay_request:fail" ){
+        
+            }
+        }
+    );
+}
+
+function exchangeCoin(){
+    var card_value = $('#card_id').val();
+    var goods_id   = $('#goods_id').val();;
+    var club_id    = $('#club_id').val();
+    var player_id  = $('#player_id').text();
+    var openid     = $('#openid').val();
+    var str        = '';
+    var load3 = null;
+    // 下单
+    var url2 = shopApi + "Index/exchangeCoin";
+    post(
+        url2,
+        {club_id:club_id, card_value:card_value, player_id:player_id, goods_id:goods_id, openid:openid},
+        function(data){
+            if(data.status == 0){
+                if(data.data.from_card_type == 1){
+                    layer.msg('兑换成功',{icon: 1, time: 1000}, function(){
+                        agaxUserInfo();
+                    });
+                }else if(data.data.from_card_type == 2){
+                    requestResultBySec(data.data.order_id);
+                }
+            }else if(data.status == 402){
+                layer.alert(data.msg);
+                location.href = shopApi + 'Index/index';
+            }else{
+                layer.alert(data.msg);
+                return false;
+            }
+        },
+        function(){
+            // $('.button-do').addClass('disabled');
+            load3 = layer.load(0, {shade: [0.5,'#000']});
+        },
+        function(){
+            // $('.button-do').removeClass('disabled');
+            layer.close(load3);
+        }
+    )
+}
+
+function requestResultBySec(order_id){
+    var url = shopApi + "Index/syncExchangeOrder";
+    var i = 0;
+    var load4 = layer.load(0, {shade: [0.5,'#000']});// 120s
+    var end = setInterval(function(){
+        i++;
+        get(
+            url,
+            {order_id:order_id},
+            function(data){
+                if(data.status == 0){
+                    if(data.data.status == 0){
+                        clearInterval(end);
+                        layer.close(load4);
+                        layer.msg('兑换成功',{icon: 1, time: 1000}, function(){
+                            agaxUserInfo();
+                        });
+                    }else{
+                        if(i >= 30){
+                            clearInterval(end);
+                            layer.close(load4);
+                            layer.msg('服务器繁忙，请稍后查询兑换结果', {icon: 5});
+                        }
+                    }
+                }else if(data.status == 402){
+                    layer.alert(data.msg);
+                    location.href = shopApi + 'Index/index';
+                }else{
+                    clearInterval(end);
+                    layer.close(load4);
+                    layer.alert(data.msg);
+                }
+            }
+        )
+    },500);
+}
+</script>
+

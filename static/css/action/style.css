@@ -1,0 +1,275 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{ 
+  margin:0; padding:0; 
+}
+html{
+  max-width: 640px;
+  margin: 0 auto;
+}
+body{
+  background: url('../../images/shop/beijingdi.png');
+  background-size: cover;
+  padding:0.5rem;
+  font-family: "微软雅黑";
+  position: relative;
+}
+.outer-container{
+  /*border:1px solid #fff;*/
+  position:relative;
+}
+.part-one{
+  background-color: #414290;
+  padding:0.5rem 1rem;
+}
+.ext{
+  background: none;
+  padding:0rem 1rem;
+}
+.ext .exchange-notice{
+  color: #ACC1F1;
+  font-size: 2rem;
+  margin: 0 0;
+}
+.part-one .spam-text{
+  color:#99FFF9;
+  font-size: 2rem;
+  display: inline-block;
+  width: 29%;
+  text-align: right;
+}
+.part-one .spam-input{
+  outline: none;
+  display: inline-block;
+  width: 69%;
+  font-size: 2rem;
+  color:#ACC1F1;
+  background: url('../../images/shop/youxiID.png');
+  background-size: cover;
+  padding-left: 2.5rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+.part-one .part-one-block{
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+.part-one .club_id,.part-one .club_card{
+  position:relative;
+}
+.part-one .select-ico{
+  display: inline-block;
+  background: url('../../images/shop/btn_xla.png');
+  background-size: cover;
+  width:3.3rem;
+  height:3.3rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.part-two{
+  text-align: center;
+  padding: 1.5rem 1.5rem;
+}
+.part-two button{
+  background: url('../../images/shop/btn_weixuanze.png');
+  border:none;
+  font-size: 2rem;
+  color:#FFFFFF;
+  padding:0.6rem 1.6rem;
+  background-size: cover;
+}
+.part-two button.select{
+  background: url('../../images/shop/btn_xuanze.png');
+  background-size: cover;
+}
+.depart{
+  display: inline-block;
+  width: 3%;
+}
+.part-three .type{
+  background: url('../../images/shop/biaoti.png');
+  background-size: cover;
+  font-size: 2rem;
+  color:#FFFFFF;
+}
+.part-three .type{
+  padding: 0.5rem;
+  padding-left:1rem;
+  margin-left: 1rem;
+}
+.part-three .notice{
+  color:#C89461;
+  font-size: 2rem;
+}
+.part-three .value{
+  color:#C89461;
+  font-size: 2rem;
+}
+.part-three .part-three-right{
+  position: absolute;
+  right:0.5rem;
+}
+.part-four ul{
+  text-align: center;
+  margin-top: 8%;
+}
+.part-four ul li{
+  display: inline-block;
+  width: 31%;
+  height: 8rem;
+  background: url('../../images/shop/daibidi.png');
+  background-size: cover;
+  margin: 0 3px;
+  margin-bottom: 1rem;
+  position:relative;
+}
+.part-four ul li.select{
+  outline: 2px solid #AF60E2;
+}
+.part-four li .part-four-box{
+  height: 64%;
+  position:relative;
+}
+.part-four li .part-four-box .money{
+  background: url('../../images/shop/btn_yue.png');
+  background-size: cover;
+  position: absolute;
+  display: inline-block;
+  width: 4rem;
+  height: 3rem;
+  left: 0.2rem;
+  top: 1rem;
+}
+
+.part-four li .part-four-box .coin{
+  background: url('../../images/shop/btn_daibi.png');
+  background-size: cover;
+  position: absolute;
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  left: 0.2rem;
+  top: 0.5rem;
+}
+
+.part-four li .part-four-box .goods-num{
+  color: #FFE79E;
+  font-size: 1.5rem;
+  position: absolute;
+  display: inline-block;
+  top: 1.6rem;
+  right:0rem;
+  width: 5rem;
+  height: 3.5rem;
+}
+.part-four li .goods-desc{
+  position: absolute;
+  bottom: 0.5rem;
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  margin: 0;
+  left: 15%;
+}
+.part-five{
+  text-align: center;
+  /*margin-top: 2rem;*/
+  margin-bottom: 2rem;
+}
+.part-five .button-do{
+  background: url('../../images/shop/btn_lijichongzhi.png');
+  background-size: cover;
+  padding:2rem 12rem;
+  border:none;
+}
+.part-five .disabled{
+  background: url('../../images/shop/btn_lijichongzhi_an.png');
+  background-size: cover;
+  padding:2rem 12rem;
+  border:none;
+}
+
+
+.part-one-block .list{
+  outline: none;
+  border: none;
+  background: url('../../images/shop/youxiID.png');
+  background-size: cover;
+  width: 69%;
+  font-size: 2rem;
+  color:#ACC1F1;
+  padding-left: 2rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+.part-one-block .list option{
+  background-color: #2A306E;
+  outline: none;
+  border: none;
+}
+
+.mask{
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display:none;
+}
+.mask .mask-foot{
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+}
+.mask .mask-face{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width: 90%;
+  height:auto;
+  background: url('../../images/shop/tishidi.png') no-repeat;
+  background-size: 100% 100%;
+  display:none;
+}
+
+.mask-face .mask-button{
+  text-align: center;
+  padding:1rem 0 3rem 0;
+}
+.mask-face .mask-button .cancel{
+  background: url('../../images/shop/quxiao.png');
+  border:none;
+  padding:6% 18%;
+  background-size: cover;
+}
+.mask-face .mask-button .confirm{
+  background: url('../../images/shop/queding.png');
+  border:none;
+  padding:6% 18%;
+  background-size: cover;
+}
+.mask-button .depart{
+  display: inline-block;
+  width: 5%;
+}
+.mask-face .notice{
+  font-size: 1.6rem;
+  color: #fff;
+  padding:6%;
+  text-indent: 5%;
+}
+.mask-face .notice .player-id{
+  color: #61E6F9;
+}
+.mask-face .notice .club-info{
+  color: #61E6F9;
+}
+.mask-face .notice .card-no{
+  color: #61E6F9;
+}
+.mask-face .notice .price{
+  color: #FF8D1D;
+}
+

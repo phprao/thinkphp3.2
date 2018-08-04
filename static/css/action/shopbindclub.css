@@ -1,0 +1,316 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{ 
+  margin:0; padding:0; 
+}
+html{
+  max-width: 640px;
+  margin: 0 auto;
+}
+body{
+  background: url('../../images/shopbind/beijingdi.png');
+  background-size: cover;
+  padding:0.5rem;
+  font-family: "微软雅黑";
+  position: relative;
+}
+.outer-container-empty{
+
+}
+.outer-container{
+  display: none;
+  position:relative;
+}
+.outer-container-done{
+	display: none;
+  position:relative;
+  padding: 0 2%;
+}
+.banner{
+    height: 10%;
+    width: 100%;
+}
+.banner img{
+	width: inherit;
+}
+.part-one{
+  padding:0 0;
+}
+#shop_name:empty::before {  
+    content: attr(placeholder); 
+    color:#5359AD; 
+}
+#shop_tel:empty::before {  
+    content: attr(placeholder);  
+    color:#5359AD; 
+}
+#club_id:empty::before {  
+    content: attr(placeholder);  
+    color:#5359AD; 
+}
+#shop_addr:empty::before {  
+    content: attr(placeholder);  
+    color:#5359AD; 
+}
+#shop_addr{
+	min-height:10%;
+    overflow-y:auto;
+}
+#shop_img .img-background{
+	background: url('../../images/shopbind/zhopiandi.png');
+	background-size: cover;
+	display: inline-block;
+    width: 98%;
+    height: 13.3rem;
+}
+#shop_img .img-src{
+	display: inline-block;
+  width: 98%;
+  height: 13.3rem;
+  display: none;
+  /*z-index: 10;*/
+}
+#shop_img{
+	background: url('../../images/shopbind/dianpuzhaopiandi.png');
+  	background-size: cover;
+  	position: relative;
+}
+#updoad_file_btn{
+	width: 71%;
+    height: 88%;
+    opacity: 0;
+    position: absolute;
+    top: 7px;
+    left: 28%;
+    z-index: 100;
+}
+.part-one-block .shop_img_text{
+	z-index: 200;
+}
+.part-one .spam-text{
+  color:#639cEE;
+  font-size: 1.6rem;
+  width: 28%;
+  text-align: center;
+  position: absolute;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.part-one .spam-input{
+  outline: none;
+  display: inline-block;
+  width: 100%;
+  font-size: 1.6rem;
+  color: #ACC1F1;
+  background: url('../../images/shopbind/shurukuangdi.png');
+  background-size: cover;
+  padding-left: 28%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+.part-one .part-one-block{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  position:relative;
+}
+.part-one .club_id,.part-one .club_card{
+  position:relative;
+}
+.part-one .select-ico{
+  display: inline-block;
+  background: url('../../images/shop/btn_xla.png');
+  background-size: cover;
+  width:3.3rem;
+  height:3.3rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.p-notice{
+	color: #ABBFF2;
+	padding: 2px 6px;
+}
+.p-notice-refuse{
+	color: #ABBFF2;
+	padding: 2px 6px;
+	display: none;
+  font-size: 2rem;
+}
+.p-notice-refuse .content{
+  color: #E85F56;
+}
+.p-waiting{
+	color: #39DA48;
+	font-size: 2rem;
+	text-align: center;
+	display: none;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.part-two{
+  text-align: center;
+  padding: 5% 9%;
+  display: none;
+}
+.part-two button{
+  background: url('../../images/shop/btn_weixuanze.png');
+  border:none;
+  font-size: 2rem;
+  color:#FFFFFF;
+  padding:3% 7%;
+  background-size: cover;
+}
+.part-two button.select{
+  background: url('../../images/shop/btn_xuanze.png');
+  background-size: cover;
+}
+.depart{
+  display: inline-block;
+  width: 3%;
+}
+.part-four ul{
+  text-align: center;
+  margin-top: 8%;
+}
+.part-four ul li{
+  display: inline-block;
+  width: 31.5%;
+  height: 8rem;
+  background: url('../../images/shop/daibidi.png');
+  background-size: cover;
+  margin: 0 3px;
+  margin-bottom: 2rem;
+  position:relative;
+}
+
+.part-five{
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.part-five .button-do{
+  background: url('../../images/shop/btn_tjrzsq.png');
+  background-size: cover;
+  padding:2.5rem 12rem;
+  border:none;
+}
+.part-five .disabled{
+  background: url('../../images/shop/btn_lijichongzhi_an.png');
+  background-size: cover;
+  padding:2rem 12rem;
+  border:none;
+}
+.part-one-block .list{
+  outline: none;
+  border: none;
+  background: url('../../images/shop/youxiID.png');
+  background-size: cover;
+  width: 69%;
+  font-size: 2rem;
+  color:#ACC1F1;
+  padding-left: 2rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+.part-one-block .list option{
+  background-color: #2A306E;
+  outline: none;
+  border: none;
+}
+
+.mask{
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display:none;
+}
+.mask .mask-foot{
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+}
+.mask .mask-face{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  width: 90%;
+  height:auto;
+  background: url('../../images/shop/tishidi.png') no-repeat;
+  background-size: 100% 100%;
+  display:none;
+}
+
+.mask-face .mask-button{
+  text-align: center;
+  padding:1rem 0 2rem 0;
+  box-sizing: border-box;
+}
+.mask-face .mask-button .cancel{
+  background: url('../../images/shop/quxiao.png');
+  border:none;
+  padding:6% 18%;
+  background-size: cover;
+}
+.mask-face .mask-button .confirm{
+  background: url('../../images/shop/queding.png');
+  border:none;
+  padding:6% 18%;
+  background-size: cover;
+}
+.mask-button .depart{
+  display: inline-block;
+  width: 5%;
+}
+.mask-face .notice{
+  font-size: 1.6rem;
+  color: #fff;
+  padding:8%;
+  text-indent: 5%;
+}
+.mask-face .notice .player-id{
+  color: #61E6F9;
+}
+.mask-face .notice .club-info{
+  color: #61E6F9;
+}
+.mask-face .notice .card-no{
+  color: #61E6F9;
+}
+.mask-face .notice .price{
+  color: #FF8D1D;
+}
+
+.pull-right{
+  text-align: right;
+  background: url('../../images/shop/btn_zhankai.png');
+  border:none;
+  padding: 6% 4%;
+  margin-right: 3%;
+  background-size: cover;
+}
+.part-one .click-to-list{
+  padding-top: 3%;
+  padding-bottom: 3%;
+  width:35%;
+}
+.qrcode-box{
+  text-align: center;
+}
+.qrcode-box .qrcode-text{
+  color: #639cEE;
+  font-size: 2rem;
+  margin: 6% 0;
+}
+.qrcode-box .qr-notice{
+  color: #F66250;
+  font-size: 2rem;
+  margin: 2% 0 6% 0;
+}
+.qrcode-box img{
+  display: inline-block;
+  width: 60%;
+}

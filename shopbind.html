@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>星云游戏城商家入驻</title>
+    <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href='./static/css/bootstrap.css'>
+    <link rel="stylesheet" type="text/css" href='./static/css/font-awesome.min.css'>
+    <link rel="stylesheet" type="text/css" href='./static/css/action/shopbindclub.css'>
+
+</head>
+<body class="overflow-hidden">
+    <div class="outer-container-empty"></div>
+	<div class="outer-container">
+        <input type="hidden" name="bind_id" id="bind_id" value="">
+        <input type="hidden" name="openid" id="openid" value="">
+        <input type="hidden" name="unionid" id="unionid" value="">
+        <div class="banner">
+            <img src="./static/images/shopbind/ruzhuxuanchuan.png" />
+        </div>
+		<div class="part-one">
+            <div class="part-one-block">
+                <span class="spam-text">店铺名称：</span>
+                <span contenteditable="true" class="spam-input" id="shop_name" placeholder="请填写您店的全称" maxlength="10"></span>
+            </div>
+            <div class="part-one-block">
+                <span class="spam-text">店铺地址：</span>
+                <span contenteditable="true" class="spam-input" id="shop_addr" placeholder="请填写店铺详细地址"></span>
+            </div>
+            <div class="part-one-block">
+                <span class="spam-text">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</span>
+                <span contenteditable="true" class="spam-input" id="shop_tel" placeholder="请填写您联系电话"></span>
+            </div>
+            <div class="part-one-block">
+                <span class="spam-text">合作门店：</span>
+                <span contenteditable="true" class="spam-input" id="club_id" placeholder="请填写合作游艺厅ID"></span>
+            </div>
+            <div class="part-one-block">
+                <span class="spam-text shop_img_text">店铺照片：</span>
+                <span class="spam-input" id="shop_img">
+                    <img src="#" class="img-src">
+                    <i class="img-background"></i>
+                    <input type="file" name="file" id="updoad_file_btn" accept="image/jpg,image/jpeg,image/png" multiple="multiple">
+                </span>
+            </div>
+        </div>
+        
+        <p class="p-notice">
+            说明：您入驻星云游戏之后，我们会引导游戏之中的玩家到您的店中使用我们游戏中所产生的优惠券进行消费，我们会通过该公众号给您结账。请确保您申请的该微信号可领取红包。
+        </p>
+        <p class="p-notice-refuse">
+            <span class="title">您的申请被门店拒绝：</span>
+            <span class="content">
+                说明：您入驻星云游戏之后，我们会引导游戏之中的玩家到您的店中使用我们游戏中所产生的优惠券进行消费，我们会通过该公众号给您结账。请确保您申请的该微信号可领取红包。
+            </span>
+        </p>
+
+        <p class="p-waiting">审核中(两个工作日回复)</p>
+        
+        <div class="part-two">
+            <button data-action="continue">继续申请</button>
+        </div>
+        <div class="part-five">
+            <button class="button-do"></button>
+        </div>  
+	</div>
+
+    <div class="outer-container-done">
+        <!-- <input type="hidden" name="bind_id" id="bind_id" value="">
+        <input type="hidden" name="openid" id="openid" value="">
+        <input type="hidden" name="unionid" id="unionid" value=""> -->
+        <div class="part-one">
+            <div class="part-one-block">
+                <span class="spam-text">店铺名称：</span>
+                <span contenteditable="false" class="spam-input" id="shop_name_2"></span>
+            </div>
+            <div class="part-one-block">
+                <span class="spam-text">店铺地址：</span>
+                <span contenteditable="false" class="spam-input" id="shop_addr_2"></span>
+            </div>
+            <div class="part-one-block">
+                <span class="spam-text">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</span>
+                <span contenteditable="false" class="spam-input" id="shop_tel_2"></span>
+            </div>
+            <div class="part-one-block">
+                <span class="spam-text">合作门店：</span>
+                <span contenteditable="false" class="spam-input" id="club_id_2"></span>
+            </div>
+            <div class="qrcode-box">
+                <p class="qrcode-text">收优惠券二维码</p>
+                <img src="http://localhost/dc_php_xingyun/trunk/dc_web/dc_web_api/Uploads/ShopQrcode/xxx.png" class="qrcode-img" />
+                <p class="qr-notice">
+                    <span>只接受</span>
+                    <span class="club_name">--</span>
+                    <span>的彩票</span>
+                </p>
+            </div>
+            <div class="part-one-block a-list">
+                <span class="spam-text click-to-list">收优惠券记录</span>
+                <span contenteditable="false" class="spam-input"><i class="pull-right"></i></span>
+            </div>
+            <p class="p-notice">
+                说明：请将该二维码打印提供给玩家用微信扫码付款。
+            </p>
+        </div>
+    </div>
+
+    <div class="mask">
+        <div class="mask-foot"></div>
+        <div class="mask-face">
+            <div class="notice">
+                您确定要取消此次入驻申请？
+            </div>
+            <div class="mask-button">
+                <button class="cancel"></button>
+                <span class="depart"></span>
+                <button class="confirm"></button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script src="./static/js/jquery.min.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+<script src="./static/js/jquery.slimscroll.min.js"></script>
+<script src="./static/js/rapheal.min.js"></script>
+<script src="./static/js/morris.min.js"></script>
+<script src="./static/js/uncompressed/datepicker.js"></script>
+<script src="./static/js/sparkline.min.js"></script>
+<script src="./static/js/uncompressed/skycons.js"></script>
+<script src="./static/js/sparkline.min.js"></script>
+<script src="./static/js/uncompressed/skycons.js"></script>
+<script src="./static/js/jquery.popupoverlay.min.js"></script>
+<script src="./static/js/jquery.easypiechart.min.js"></script>
+<script src="./static/js/uncompressed/jquery.sortable.js"></script>
+<script src="./static/js/owl.carousel.min.js"></script>
+<script src="./static/js/modernizr.min.js"></script>
+<script src="./static/js/utility/layer/layer.js"></script>
+<script src="./static/js/upload.js"></script>
+<script src="./static/js/zepto.min.js"></script>
+<script src="./static/js/utility/common.js"></script>
+
+<script>
+// 获取code
+var param =  UrlSearch();
+var code     = param['code'];
+if(typeof(code) == 'undefined'){
+    code = '';
+}
+// 授权信息
+initWxInfo(code);
+/**
+ * 获取俱乐部信息
+ * @return {[type]} [description]
+ */
+function initWxInfo(code){
+    // 获取用户信息
+    var url = shopApi + "Shop/getWxUser";
+    var load1 = null;
+    get(
+        url,
+        {code:code},
+        function(data){
+            if(data.status == 0){
+                $('#openid').val(data.data.userInfo.openid);
+                $('#unionid').val(data.data.userInfo.unionid);
+                if(typeof(data.data.info) == 'undefined'){
+                    $('.outer-container').show();
+                }else{
+                    var status = data.data.info.status;
+                    $('#bind_id').val(data.data.info.shop_id);
+                    if(status == 1){
+                        // 申请中
+                        $('.outer-container').show();
+                        $('#shop_name').text(data.data.info.name);
+                        $('#shop_name').attr('contenteditable',"false");
+                        $('#shop_addr').text(data.data.info.address);
+                        $('#shop_addr').attr('contenteditable',"false");
+                        $('#shop_tel').text(data.data.info.tel);
+                        $('#shop_tel').attr('contenteditable',"false");
+                        $('#club_id').text(data.data.info.club_id);
+                        $('#club_id').attr('contenteditable',"false");
+                        $('#shop_img .img-src').attr('src', data.data.info.face_img);
+                        $('.img-background').hide();
+                        $('.img-src').show();
+                        $('#updoad_file_btn').attr('disabled', 'disabled');
+                        $('.part-five').hide();
+                        $('.p-waiting').show();
+                        $('.part-two button').text('取消申请');
+                        $('.part-two button').attr('data-action','cancel');
+                        $('.part-two').show();
+                    }else if(status == 3){
+                        // 被拒绝
+                        $('.outer-container').show();
+                        $('#shop_name').text(data.data.info.name);
+                        $('#shop_name').attr('contenteditable',"false");
+                        $('#shop_addr').text(data.data.info.address);
+                        $('#shop_addr').attr('contenteditable',"false");
+                        $('#shop_tel').text(data.data.info.tel);
+                        $('#shop_tel').attr('contenteditable',"false");
+                        $('#club_id').text(data.data.info.club_id);
+                        $('#club_id').attr('contenteditable',"false");
+                        $('#shop_img .img-src').attr('src', data.data.info.face_img);
+                        $('.img-background').hide();
+                        $('.img-src').show();
+                        $('#updoad_file_btn').attr('disabled', 'disabled');
+                        $('.part-five').hide();
+                        $('.p-notice').hide();
+                        $('.part-two button').text('重新申请');
+                        $('.part-two button').attr('data-action','continue');
+                        $('.part-two').show();
+                        $('.p-notice-refuse .content').text(data.data.info.refuse_reason);
+                        $('.p-notice-refuse').show();
+                    }else if(status == 4){
+                        // 已通过
+                        // window.location.href = data.data.info.redirect_uri;
+                        $('.outer-container-done').show();
+                        $('#shop_name_2').text(data.data.info.name);
+                        $('#shop_addr_2').text(data.data.info.address);
+                        $('#shop_tel_2').text(data.data.info.tel);
+                        $('#club_id_2').text(data.data.info.club_id);
+                        $('.club_name').text(data.data.info.club_name);
+                        $('.qrcode-img').attr('src', data.data.info.qrcode);
+                    }
+                }
+            }else if(data.status == 40029 || data.status == 40163){
+                location.href = shopApi + 'Shop/index';
+            }else{
+                layer.alert(data.msg);
+            }
+        }
+    )
+}
+
+
+$('.button-do').on('click', function(){
+    var name       = $('#shop_name').text();
+    var address    = $('#shop_addr').text();
+    var tel        = $('#shop_tel').text();
+    var club_id    = $('#club_id').text();
+    var openid     = $('#openid').val();
+    var unionid    = $('#unionid').val();
+    var load1 = null;
+    var reg0 = /(^\s+)|(\s+$)|\s+/g;
+    var reg1 = /^[0-9]{11}$/;
+    var reg2 = /^[0-9]{1,11}$/;
+
+    if(reg0.test(name) || !name){
+        layer.alert('店铺名称格式有误');
+        return false;
+    }
+    if(name.length > 30){
+        layer.alert('店铺名称必须少于30个字');
+        return false;
+    }
+    if(reg0.test(address) || !address){
+        layer.alert('店铺地址格式有误');
+        return false;
+    }
+    if(address.length > 30){
+        layer.alert('店铺名称必须少于30个字');
+        return false;
+    }
+    if(!reg1.test(tel)){
+        layer.alert('电话为11位数字');
+        return false;
+    }
+    if(!reg2.test(club_id)){
+        layer.alert('俱乐部ID为11位以内数字');
+        return false;
+    }
+    
+    var url2 = shopApi + "Shop/apply";
+
+    var animateimg = $("#updoad_file_btn").val(); //获取上传的图片名 带//  
+    var imgarr     = animateimg.split('\\'); //分割  
+    var myimg      = imgarr[imgarr.length-1]; //去掉 // 获取图片名  
+    var houzui     = myimg.lastIndexOf('.'); //获取 . 出现的位置  
+    var ext        = myimg.substring(houzui, myimg.length).toUpperCase();  //切割 . 获取文件后缀  
+    var file       = $('#updoad_file_btn').get(0).files[0]; //获取上传的文件  
+    var fileSize   = file.size;           //获取上传的文件大小  
+    var maxSize    = 1572864;              //最大1.5MB  
+    if(ext !='.PNG' && ext !='.GIF' && ext !='.JPG' && ext !='.JPEG'){  
+        layer.alert('文件类型错误,请上传图片类型');  
+        return false;
+    }else if(parseInt(fileSize) >= parseInt(maxSize)){  
+        layer.alert('上传的文件不能超过1.5MB');  
+        return false;
+    }
+    var formData = new FormData();
+    formData.append("file", $("#updoad_file_btn")[0].files[0]);
+    formData.append("name", name);
+    formData.append("address", address);
+    formData.append("tel", tel);
+    formData.append("club_id", club_id);
+    formData.append("openid", openid);
+    formData.append("unionid", unionid);
+
+    $.ajax({
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        url: url2,   
+        type: 'POST',    
+        data: formData,    
+        dataType: 'JSON',    
+        cache: false,    
+        processData: false,    
+        contentType: false,
+        beforeSend:function(XMLHttpRequest){
+            load1 = layer.load(0, {shade: [0.5,'#000']});
+        },
+        success:function(data) {
+            if(data.status == 0){
+                layer.msg('提交成功，请耐心等待商家审批~',{icon: 1, time: 1000}, function(){
+                    history.go(0);
+                });
+            }else{
+                layer.alert(data.msg);
+                return false;
+            }
+        },
+        complete:function(XMLHttpRequest,textStatus){
+            layer.close(load1);
+        },
+        error:function(jqXHR,textStatus,errorThrown){
+            layer.alert('上传的图片太大，请重新上传');
+        }
+    });
+
+})
+
+$('.a-list').on('click', function(){
+    location.href = 'exchange_list.html';
+})
+
+$('.part-two button').on('click', function(){
+    var type = $('.part-two button').data('action');
+    if(type == 'cancel'){
+        $('.mask-face notice').text('您确定要取消此次入驻申请？');
+        $('.mask').show();
+        $('.mask-face').show();
+        $("html").css({"overflow":"hidden","height":"100%"});
+        $("body").css({"overflow":"hidden","height":"100%"});
+    }else if(type == 'continue'){
+        $('#shop_name').attr('contenteditable',"true");
+        $('#shop_addr').attr('contenteditable',"true");
+        $('#shop_tel').attr('contenteditable',"true");
+        $('#club_id').attr('contenteditable',"true");
+        $('.img-background').show();
+        $('.img-src').hide();
+        $('#updoad_file_btn').attr('disabled', false);
+        $('.part-five').show();
+        $('.part-two').hide();
+        $('.p-notice').show();
+        $('.p-notice-refuse').hide();
+    }
+})
+$('.mask .cancel').on('click', function(){
+    $('.mask').hide();
+    $("html").css({"overflow":"visible","height":"auto"});
+    $("body").css({"overflow":"visible","height":"auto"});
+})
+$('.mask .confirm').on('click', function(){
+    $('.mask').hide();
+    $("html").css({"overflow":"visible","height":"auto"});
+    $("body").css({"overflow":"visible","height":"auto"});
+
+    cancelApply('cancel');
+})
+
+function cancelApply(action){
+    var bind_id = $('#bind_id').val();
+    var unionid = $('#unionid').val();
+    var url2 = shopApi + "Shop/cancelApply";
+    post(
+        url2,
+        {bind_id:bind_id, unionid:unionid},
+        function(data){
+            if(data.status == 0){
+                if(action == 'cancel'){
+                    layer.msg('取消成功，您可以重新申请啦~',{icon: 1, time: 1000}, function(){
+                        location.href = shopApi + 'Shop/index';
+                    });
+                }
+            }else{
+                layer.alert(data.msg);
+                return false;
+            }
+        },
+        function(){
+            load1 = layer.load(0, {shade: [0.5,'#000']});
+        },
+        function(){
+            layer.close(load1);
+        }
+    )
+}
+
+$('#updoad_file_btn').bind('change',function(event){
+    var imageUrl = getObjectURL($(this)[0].files[0]);
+    convertImgToBase64(imageUrl, function(base64Img){
+        //base64Img为转好的base64,放在img src直接前台展示(<img src="data:image/jpg;base64,/9j/4QMZRXh...." />)
+        $(".img-src").attr("src",base64Img);
+        // $("#img_base64").val(base64Img.split(",")[1]);
+        // $("#img_base64").val(base64Img);
+        $('.img-background').hide();
+        $('.img-src').show();
+    });
+    event.preventDefault(); 
+}); 
+
+//生成图片的base64编码
+function convertImgToBase64(url, callback, outputFormat){ 
+    //html5 的convas画布
+    var canvas = document.createElement('CANVAS'); 
+    var ctx = canvas.getContext('2d'); 
+    var img = new Image; 
+    img.crossOrigin = 'Anonymous'; 
+    img.onload = function(){
+        var width = img.width;
+        var height = img.height;
+        // 按比例压缩4倍
+        //var rate = (width<height ? width/height : height/width)/4;
+        //原比例生成画布图片
+        var rate = 1;
+        canvas.width = width*rate; 
+        canvas.height = height*rate; 
+        ctx.drawImage(img,0,0,width,height,0,0,width*rate,height*rate); 
+        // canvas.toDataURL 返回的是一串Base64编码的URL，当然,浏览器自己肯定支持 
+        var dataURL = canvas.toDataURL(outputFormat || 'image/png'); 
+        callback.call(this, dataURL); 
+        canvas = null; 
+    };
+    img.src = url; 
+}
+
+//createobjecturl()静态方法创建一个包含了DOMString代表参数对象的URL。该url的声明周期是在该窗口中.也就是说创建浏览器创建了一个代表该图片的Url.
+function getObjectURL(file) {
+    var url = null ; 
+    if (window.createObjectURL!=undefined){
+        // basic
+        url = window.createObjectURL(file) ;
+    } else if (window.URL!=undefined){
+        // mozilla(firefox)
+        url = window.URL.createObjectURL(file) ;
+    } else if (window.webkitURL!=undefined){
+        //web_kit or chrome
+        url = window.webkitURL.createObjectURL(file) ;
+    }
+    return url ;
+}
+
+</script>

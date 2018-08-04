@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>星云游戏城兑换优惠券</title>
+    <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href='./static/css/bootstrap.css'>
+    <link rel="stylesheet" type="text/css" href='./static/css/font-awesome.min.css'>
+    <link rel="stylesheet" type="text/css" href='./static/css/action/exchange.css?t=123'>
+
+</head>
+<body class="overflow-hidden">
+	<div class="outer-container-empty"></div>
+	<div class="outer-container">
+		<input type="hidden" name="shop_id" id="shop_id" value="">
+		<input type="hidden" name="player_id" id="player_id" value="">
+        <input type="hidden" name="openid" id="openid" value="">
+        <input type="hidden" name="unionid" id="unionid" value="">
+		<div class="part-one">
+			<p class="shop-name">
+				<img src="./static/images/coupon/btn_youhuiquan.png" class="coupon-background">
+				<span>龙井茶馆</span>
+			</p>
+		</div>
+		<div class="part-two">
+			<p class="notice">请输入您要兑换的优惠券数</p>
+			<p class="keyin">
+				<span class="money-icon">¥</span>
+				<input type="number" name="money" id="money" oninput="if(value.length > 8) value = value.slice(0,8)" />
+			</p>
+			<p class="notice-bottom1">注：您的电子卡可兑换优惠券数：<span>500</span></p>
+			<p class="notice-bottom2">当次最高可兑换 <span>300</span> 优惠券</p>
+			<div class="part-two-bottom">
+	            <button class="button-do"></button>
+	        </div>
+		</div>
+	</div>
+
+
+
+    <div class="mask">
+        <div class="mask-foot"></div>
+        <div class="mask-face">
+            <div class="notice">
+                您确定用 
+                <span class="lottery-num">--</span> 彩票在 
+                <span class="notice-name">--</span> 兑换 
+                <span class="coupon-num">--</span> 元优惠券？
+            </div>
+            <div class="mask-button">
+                <button class="cancel"></button>
+                <span class="depart"></span>
+                <button class="confirm"></button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script src="./static/js/jquery.min.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+<script src="./static/js/jquery.slimscroll.min.js"></script>
+<script src="./static/js/rapheal.min.js"></script>
+<script src="./static/js/morris.min.js"></script>
+<script src="./static/js/uncompressed/datepicker.js"></script>
+<script src="./static/js/sparkline.min.js"></script>
+<script src="./static/js/uncompressed/skycons.js"></script>
+<script src="./static/js/sparkline.min.js"></script>
+<script src="./static/js/uncompressed/skycons.js"></script>
+<script src="./static/js/jquery.popupoverlay.min.js"></script>
+<script src="./static/js/jquery.easypiechart.min.js"></script>
+<script src="./static/js/uncompressed/jquery.sortable.js"></script>
+<script src="./static/js/owl.carousel.min.js"></script>
+<script src="./static/js/modernizr.min.js"></script>
+<script src="./static/js/utility/layer/layer.js"></script>
+<script src="./static/js/upload.js"></script>
+<script src="./static/js/zepto.min.js"></script>
+<script src="./static/js/utility/common.js"></script>
+
+<script>
+// 获取code
+var param   =  UrlSearch();
+var code    = param['code'];
+var shop_id = param['shop_id'];
+if(typeof(code) == 'undefined'){
+    code = '';
+}
+if(typeof(shop_id) == 'undefined'){
+    shop_id = '';
+}
+// 授权信息
+initWxInfo(code);
+/**
+ * 获取俱乐部信息
+ * @return {[type]} [description]
+ */
+function initWxInfo(code){
+    // 获取用户信息
+    var url = shopApi + "Exchange/getWxUser";
+    var load1 = null;
+    get(
+        url,
+        {code:code, shop_id:shop_id},
+        function(data){
+            if(data.status == 0){
+                $('#openid').val(data.data.userInfo.openid);
+                $('#unionid').val(data.data.userInfo.unionid);
+                $('#player_id').val(data.data.userInfo.player_id);
+                $('#shop_id').val(data.data.bindInfo.shop_id_str);
+                $('.shop-name span').text(data.data.bindInfo.name);
+                $('.notice-bottom1 span').text(data.data.detail.user_money);
+                $('.notice-bottom2 span').text(data.data.detail.max_money);
+                $('.outer-container').show();
+            }else if(data.status == 40029 || data.status == 40163){
+                location.href = shopApi + 'Exchange/index/shop_id/'+shop_id;
+            }else{
+                layer.alert(data.msg);
+            }
+        },
+        function(){
+            // load1 = layer.load(0, {shade: [0.5,'#000']});
+            // $('.layui-layer-loading .layui-layer-content').css('margin','0 auto');
+        },
+        function(){
+            // layer.close(load1);
+        }
+    )
+}
+
+$('.button-do').on('click', function(){
+    showNotice();
+})
+
+$('.mask .cancel').on('click', function(){
+    $('.mask').hide();
+    $("html").css({"overflow":"visible","height":"auto"});
+    $("body").css({"overflow":"visible","height":"auto"});
+})
+$('.mask .confirm').on('click', function(){
+    $('.mask').hide();
+    $("html").css({"overflow":"visible","height":"auto"});
+    $("body").css({"overflow":"visible","height":"auto"});
+
+    apply();
+
+})
+
+function showNotice(){
+	var money = $('#money').val();
+	var load2 = null;
+	var reg   = /^[0-9]{1,11}$/;
+    if(!reg.test(money)){
+        layer.alert('请输入整数数字');
+        return false;
+    }
+    if(parseInt(money) < 1){
+    	layer.alert('请输入大于1的整数');
+        return false;
+    }
+	var url2 = shopApi + "Exchange/getLottery";
+	get(
+		url2,
+        {money:money},
+        function(data){
+            if(data.status == 0){
+                $('.lottery-num').text(data.data.need_lottery);
+				$('.notice-name').text($('.shop-name span').text());
+				$('.coupon-num').text(data.data.money);
+				$('.mask').show();
+			    $(".mask-face").show();
+			    $("html").css({"overflow":"hidden","height":"100%"});
+			    $("body").css({"overflow":"hidden","height":"100%"});
+            }else if(data.status == 402){
+                layer.alert(data.msg);
+                location.href = shopApi + 'Exchange/index/shop_id/'+shop_id;
+            }else{
+                layer.alert(data.msg);
+                return false;
+            }
+        },
+        function(){
+            load2 = layer.load(0, {shade: [0.5,'#000']});
+        },
+        function(){
+            layer.close(load2);
+        }
+	)
+}
+
+function apply(){
+	var money = $('#money').val();
+	var load2 = null;
+	var reg   = /^[0-9]{1,11}$/;
+    if(!reg.test(money)){
+        layer.alert('请输入整数数字');
+        return false;
+    }
+    if(parseInt(money) < 1){
+    	layer.alert('请输入大于1的整数');
+        return false;
+    }
+    var url2 = shopApi + "Exchange/apply";
+    post(
+        url2,
+        {money:money},
+        function(data){
+            if(data.status == 0){
+                layer.msg('兑换成功',{icon: 1, time: 1000}, function(){
+                    location.href = shopApi + 'Exchange/index/shop_id/'+shop_id;
+                });
+            }else if(data.status == 402){
+                layer.alert(data.msg);
+                location.href = shopApi + 'Exchange/index/shop_id/'+shop_id;
+            }else{
+                layer.alert(data.msg);
+                return false;
+            }
+        },
+        function(){
+            load2 = layer.load(0, {shade: [0.5,'#000']});
+        },
+        function(){
+            layer.close(load2);
+        }
+    )
+}
+
+</script>

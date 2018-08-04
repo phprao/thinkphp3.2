@@ -1,0 +1,76 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{ 
+  margin:0; padding:0; 
+}
+html{
+  max-width: 640px;
+  margin: 0 auto;
+}
+body{
+  background: url('../../images/shopbind/beijingdi.png');
+  background-size: cover;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-family: "微软雅黑";
+  position: relative;
+}
+.outer-container-empty{
+
+}
+.outer-container{
+  display: none;
+  position:relative;
+}
+.part-one{
+  font-size: 2rem;
+  position: relative;
+  margin-top: 5px;
+  margin-bottom: -6px;
+}
+.part-one .title{
+  color: #99FFF9;
+  display: inline-block;
+  height: 32px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.part-one .total{
+  color: #E2A657;
+  position: absolute;
+  right: 0;
+}
+.part-one .xian{
+  width: 100%;
+  height: 1px;
+}
+.part-one .back-icon{
+  height: 20px;
+}
+#list{
+  color: #B5CBFB;
+  background-color: #
+  background-color: #
+}
+#list li{
+  position: relative;
+  padding: 9px 12px;
+  font-size: 1.7rem;
+  background: url('../../images/shopbind/jiluxuanxiangdi.png');
+  background-size: cover;
+  list-style-type:none;
+}
+li .right{
+  color: #FCB84D;
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.nickname{
+  width: 82%;
+  overflow: hidden;
+  padding: 3px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.dropload-down{
+  color: #B5CBFB;
+}

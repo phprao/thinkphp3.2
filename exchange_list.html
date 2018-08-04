@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>星云游戏城兑换记录</title>
+    <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href='./static/css/bootstrap.css'>
+    <link rel="stylesheet" type="text/css" href='./static/css/font-awesome.min.css'>
+    <link rel="stylesheet" type="text/css" href='./static/css/dropload.css'>
+    <link rel="stylesheet" type="text/css" href='./static/css/action/exchange_list.css?t=123'>
+
+</head>
+<body class="overflow-hidden">
+	<div class="outer-container-empty"></div>
+	<div class="outer-container">
+        <input type="hidden" name="last_id" id="last_id" value="0"/>
+        <input type="hidden" name="page" id="page" value="1"/>
+		<div class="part-one">
+            <img src="./static/images/shopbind/btn_fanhui.png" class="back-icon">
+            <span class="title">收优惠券记录</span>
+            <span class="total">
+                <span>合计：</span>
+                <span class="total-num"></span>
+                <span> 元</span>
+            </span>
+            <img src="./static/images/shopbind/xian.png" class="xian">
+        </div>
+        <div class="part-two">
+            <ul id="list">
+                
+            </ul>
+        </div>
+	</div>
+
+</body>
+</html>
+
+<script src="./static/js/jquery.min.js"></script>
+<script src="./static/js/bootstrap.min.js"></script>
+<script src="./static/js/jquery.slimscroll.min.js"></script>
+<script src="./static/js/utility/layer/layer.js"></script>
+<script src="./static/js/dropload.min.js"></script>
+<script src="./static/js/utility/common.js"></script>
+
+<script>
+
+$('.back-icon').on('click', function(){
+    location.href = shopApi + 'Shop/index';
+})
+
+getTotal();
+
+$(function(){
+    var tab1LoadEnd = false;
+    var dropload = $('.outer-container').dropload({
+        scrollArea : window,
+        loadDownFn : function(me){
+            // 获取列表信息
+            var url     = shopApi + "Shop/exchangeList";
+            var page    = $('#page').val();
+            var last_id = $('#last_id').val();
+            get(
+                url,
+                {page,page,last_id:last_id},
+                function(data){
+                    if(data.status == 0){
+                        $('#page').val(data.data.page + 1);
+                        $('#last_id').val(data.data.last_id);
+                        if(data.data.list.length > 0){
+                            createList(data.data.list);
+                        }
+                        if(data.data.list.length < 10){
+                            // 数据加载完
+                            tab1LoadEnd = true;
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+                        }
+                        me.resetload();
+                    }else if(data.status == 402){
+                        layer.alert(data.msg);
+                        location.href = shopApi + 'Shop/index';
+                    }else{
+                        layer.alert(data.msg);
+                    }
+                },
+                function(){
+                    
+                },
+                function(){
+                    
+                },
+                function(){
+                    me.resetload();
+                }
+            )
+        }
+    })
+})
+
+
+
+
+
+function getTotal(){
+    // 获取用户信息
+    var url = shopApi + "Shop/getExchangeSum";
+    var load1 = null;
+    get(
+        url,
+        {},
+        function(data){
+            if(data.status == 0){
+                $('.total-num').text(data.data.total);
+                $('.outer-container').show();
+            }else if(data.status == 40029 || data.status == 40163){
+                location.href = shopApi + 'Shop/index';
+            }else{
+                layer.alert(data.msg);
+            }
+        }
+    )
+}
+
+function getPage(){
+    // 获取列表信息
+    var url     = shopApi + "Shop/exchangeList";
+    var load1   = null;
+    var page    = $('#page').val();
+    var last_id = $('#last_id').val();
+    get(
+        url,
+        {page,page,last_id:last_id},
+        function(data){
+            if(data.status == 0){
+                $('#page').val(data.data.page + 1);
+                $('#last_id').val(data.data.last_id);
+                if(data.data.list.length > 0){
+                    createList(data.data.list);
+                }
+            }else if(data.status == 402){
+                layer.alert(data.msg);
+                location.href = shopApi + 'Shop/index';
+            }else{
+                layer.alert(data.msg);
+            }
+        },
+        function(){
+            load1 = layer.load(0, {shade: [0.5,'#000']});
+            $('.layui-layer-loading .layui-layer-content').css('margin','0 auto');
+        },
+        function(){
+            layer.close(load1);
+        }
+    )
+}
+
+function createList(list){
+    var len = list.length;
+    var html = '';
+    for(var i = 0; i<len; i++){
+        html += '<li>\
+                   <p class="nickname">('+list[i].player_id+') '+list[i].nickname+'</p> \
+                   <p class="time-str">'+list[i].create_date+'</p>\
+                   <span class="right">¥'+list[i].get_type_value+'</span>\
+                </li>';
+    }
+    $('#list').append(html);
+}
+</script>

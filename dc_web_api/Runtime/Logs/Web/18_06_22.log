@@ -1,0 +1,176 @@
+[ 2018-06-22T14:46:10+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/apply
+INFO: {"status":10001,"msg":"\u5bf9\u4e0d\u8d77\uff0c\u8be5\u4ff1\u4e50\u90e8\u4f59\u989d\u4e0d\u8db3\u3002","data":[]}
+[ 2018-06-22T14:46:10+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/apply
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `dc_shop_bind_club` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_shop_bind_club` WHERE `shop_id` = 600018 AND `status` = 4 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `dc_config` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `dc_config` WHERE `config_name` = 'shop_exchange_config' AND `config_status` = 1 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `dc_shop_exchange_lottery` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `dc_wx_bonus_log` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_club_info` WHERE ( club_id=1 ) LIMIT 1   FOR UPDATE  [ RunTime:0.0010s ]
+
+[ 2018-06-22T14:50:20+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/test
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_club_info` WHERE ( club_id=1 ) LIMIT 1   FOR UPDATE  [ RunTime:0.0030s ]
+
+[ 2018-06-22T14:50:56+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/test
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_club_info` WHERE ( club_id=1 ) LIMIT 1   FOR UPDATE  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.018000s ]
+
+[ 2018-06-22T14:53:10+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/test
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `dc_club_info` WHERE ( club_id=1 ) LIMIT 1   FOR UPDATE  [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007000s ]
+
+[ 2018-06-22T14:53:45+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/getLottery?money=2
+INFO: {"status":0,"msg":"success","data":{"need_lottery":200,"money":2}}
+[ 2018-06-22T14:53:45+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/getLottery?money=2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_club_info` WHERE `club_id` = 1 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-06-22T14:54:11+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/apply
+INFO: {"status":10001,"msg":"\u5bf9\u4e0d\u8d77\uff0c\u8be5\u4ff1\u4e50\u90e8\u4f59\u989d\u4e0d\u8db3\u3002","data":[]}
+[ 2018-06-22T14:54:11+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/apply
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `dc_shop_bind_club` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_shop_bind_club` WHERE `shop_id` = 600018 AND `status` = 4 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `dc_config` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `dc_config` WHERE `config_name` = 'shop_exchange_config' AND `config_status` = 1 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `dc_shop_exchange_lottery` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `dc_wx_bonus_log` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_club_info` WHERE `club_id` = 1 LIMIT 1   FOR UPDATE  [ RunTime:0.0010s ]
+
+[ 2018-06-22T14:54:57+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/getLottery?money=1
+INFO: {"status":0,"msg":"success","data":{"need_lottery":100,"money":1}}
+[ 2018-06-22T14:54:57+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/getLottery?money=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `dc_club_info` WHERE `club_id` = 1 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-06-22T14:55:00+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/apply
+ERR: [ exchange ] : 红包发送失败 | id = 23 | 红包发送失败，请稍后重试
+[ 2018-06-22T14:55:00+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/apply
+INFO: {"status":0,"msg":"success","data":[]}
+[ 2018-06-22T14:55:00+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/apply
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `dc_shop_bind_club` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_shop_bind_club` WHERE `shop_id` = 600018 AND `status` = 4 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `dc_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `dc_config` WHERE `config_name` = 'shop_exchange_config' AND `config_status` = 1 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `dc_shop_exchange_lottery` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `dc_wx_bonus_log` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `dc_club_info` WHERE `club_id` = 1 LIMIT 1   FOR UPDATE  [ RunTime:0.0010s ]
+SQL: UPDATE `dc_club_info` SET `club_residue_money`=club_residue_money-1 WHERE `club_id` = 1 [ RunTime:0.0020s ]
+SQL: INSERT INTO `dc_wx_bonus_log` (`type_id`,`receiver_id`,`openid`,`unionid`,`mch_billno`,`total_amount`,`create_time`,`create_date`) VALUES ('1','600018','raoxiaoya_test_8888','test_unionid_8888','b43738b3ee02b29bd88d7e8aef555d87','1','1529650498','2018-06-22 14:54:58') [ RunTime:0.0030s ]
+SQL: INSERT INTO `dc_shop_exchange_lottery` (`shop_id`,`club_id`,`player_id`,`cost_type`,`cost_value`,`cost_before`,`cost_after`,`get_type`,`get_type_value`,`get_type_id`,`club_lottery_rate`,`create_time`,`create_date`) VALUES ('600018','1','1096611','1','100','27865','27765','1','1','23','100','1529650498','2018-06-22 14:54:58') [ RunTime:0.0030s ]
+SQL: SELECT * FROM `dc_wx_bonus_log` WHERE `id` = 23 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-06-22T14:55:01+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/index/shop_id/MDAwMDAwMDAwMLKgprCzeX5t
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-06-22T14:55:31+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/getWxUser?code=123&shop_id=MDAwMDAwMDAwMLKgprCzeX5t
+INFO: {"status":0,"msg":"success","data":{"userInfo":{"openid":"raoxiaoya_test_8888","unionid":"test_unionid_8888","player_id":"1096611"},"bindInfo":{"shop_id":"600018","club_id":"1","unionid":"test_unionid_8888","openid":"raoxiaoya_test_8888","name":"\u5168\u805a\u5fb7\u70e4\u9e2d","address":"\u5317\u4eac\u5e02","tel":"15678907654","face_img":"Uploads\/Shop\/1528723541_600018.jpg","qrcode":"Uploads\/ShopQrcode\/qr_1528723541_600018.png","qrcode_url":"http:\/\/localhost\/dc_php_xingyun\/trunk\/dc_web\/dc_web_api\/Exchange\/index\/shop_id\/MDAwMDAwMDAwMLKgprCzeX5t","status":"4","refuse_reason":"","create_time":"1528723541","cancel_time":"0","approve_time":"0","refuse_time":"0","disabled_time":"0","shop_id_str":"MDAwMDAwMDAwMLKgprCzeX5t"},"detail":{"max_money":200,"user_money":"277.65"},"club_player":{"id":"2075","club_id":"1","player_id":"1096611","player_tokens":"125","player_lottery":"27765","player_amount":"1430","join_time":"1528274946"}}}
+[ 2018-06-22T14:55:31+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/getWxUser?code=123&shop_id=MDAwMDAwMDAwMLKgprCzeX5t
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `dc_shop_bind_club` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `dc_shop_bind_club` WHERE `shop_id` = 600018 AND `status` = 4 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `dc_player` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_player` WHERE `player_unionid` = 'test_unionid_8888' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `dc_club_info` WHERE `club_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `dc_config` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `dc_config` WHERE `config_name` = 'shop_exchange_config' AND `config_status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-06-22T14:57:46+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/getLottery?money=1
+INFO: {"status":0,"msg":"success","data":{"need_lottery":100,"money":1}}
+[ 2018-06-22T14:57:46+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/getLottery?money=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_club_info` WHERE `club_id` = 1 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-06-22T14:57:47+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/apply
+INFO: {"status":10001,"msg":"\u5bf9\u4e0d\u8d77\uff0c\u8be5\u4ff1\u4e50\u90e8\u4f59\u989d\u4e0d\u8db3\u3002","data":[]}
+[ 2018-06-22T14:57:47+08:00 ] ::1 /dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/apply
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `dc_shop_bind_club` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `dc_shop_bind_club` WHERE `shop_id` = 600018 AND `status` = 4 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `dc_config` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `dc_config` WHERE `config_name` = 'shop_exchange_config' AND `config_status` = 1 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `dc_shop_exchange_lottery` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `dc_wx_bonus_log` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `dc_club_info` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `dc_club_info` WHERE `club_id` = 1 LIMIT 1   FOR UPDATE  [ RunTime:0.0020s ]
+
