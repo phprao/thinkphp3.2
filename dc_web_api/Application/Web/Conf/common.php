@@ -14,10 +14,10 @@ return array(
 	),
 
 	// 星云游戏城公众号配置列表
-	'APPID'     =>'wx825838e84705a950',
-	'APPSECRET' =>'cf6492fa9bc5db60183b4ee530e24eb8',
-	'MCHID'     =>'1499521862',
-	'KEY'		=>'HJKDHsey3uioyf87dyf934fd97yfqdnb',
+	'APPID'     =>'',
+	'APPSECRET' =>'',
+	'MCHID'     =>'',
+	'KEY'		=>'',
 
 
 	// 公众号充值

@@ -24,10 +24,10 @@ class WxPayConfig
 	 */
 	
 	// 星云游戏城
-	const APPID     = 'wx825838e84705a950';
-	const APPSECRET = 'cf6492fa9bc5db60183b4ee530e24eb8';
-	const MCHID     = '1499521862';
-	const KEY       = 'HJKDHsey3uioyf87dyf934fd97yfqdnb';
+	const APPID     = '';
+	const APPSECRET = '';
+	const MCHID     = '';
+	const KEY       = '';
 	
 	//=======【证书路径设置】=====================================
 	/**

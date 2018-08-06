@@ -37,9 +37,9 @@ return array_merge(
 		// 星云公众号微信红包
 		'SEND_BONUS_CONFIG' => [
 	        // 微信发红包地址
-	        'send_bonus_url'      => 'http://www.dachuanyx.com/dc_service/sendwxbonus.php',
+	        'send_bonus_url'      => '',
 	        // 微信发红包回调地址
-	        'send_bonus_callback' => 'http://localhost/dc_php_xingyun/trunk/dc_web/dc_web_api/Exchange/notifyAction',
+	        'send_bonus_callback' => '',
 	        // 微信发红包名称
 	        'send_bonus_name'     => 'xingyun',
 	        // 微信发红包应用场景
